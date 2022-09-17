@@ -1,0 +1,72 @@
+//well come in my code
+#include<stdio.h>
+#include<string.h>
+
+struct Employee {
+    char name[999] ;
+    float salary ;
+    int duration ;
+};
+//End_struct
+
+void Input_employee (Employee a[] , int d) {
+    printf ( "Employee name: " ) ;
+    getchar () ;
+    gets (a[d].name) ;
+    printf ( "Salary (Bath/Month): " ) ;
+    scanf ("%f",&a[d].salary) ;
+    printf ( "Duration (year): " ) ;
+    scanf ("%d",&a[d].duration) ;
+    d++ ; 
+    }
+//end Input_employee
+
+void show_output (Employee a[], int d){ 
+    int cat ;
+    int i = 0 ;
+    int j = 0 ;
+    float sum = 0 ;
+    float highsalary = -1 ;
+    while ( i < d ) {
+     sum = sum + a[i].salary ;
+     i++  ;
+    }
+      printf ( "Average of Salary: %.2f Bath\n ", sum/d ) ; 
+      printf ( "Payment of every month: %.2f Bath\n ", sum ) ; 
+      printf ( "**Most Salary in this business**\n" ) ; 
+//end while      
+
+    
+   while ( j < d ) {
+        switch (a[j].salary>highsalary) {
+            case 1 : highsalary = a[j].salary ; 
+             cat = j ;
+            break;
+        }
+        j++ ;
+    } 
+//end while
+
+    printf ( " Name : %s (%d years)\n" , a[cat].name, a[cat].duration ) ; 
+    printf ( " Salary : %.2f (Bath)\n" , a[cat].salary ) ; 
+}
+//end show_output ( a , d )
+
+int main(){
+    int d = 0 ;
+    Employee a[999] ;
+    char p = 'y' ; 
+    while ( p == 'y' ) {
+        printf ("Do you want to Enter Employee Information? (y/n) : ");
+        scanf (" %c", &p);
+        switch(p) {
+            case 'y' : Input_employee ( a , d ) ; 
+             d++ ; 
+             break ; 
+            case 'n' : break ;
+        }
+    }
+    show_output ( a , d ) ;
+}
+//end main
+//made of my soul
